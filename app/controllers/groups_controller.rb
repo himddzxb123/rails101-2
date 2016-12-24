@@ -22,8 +22,11 @@ end
 
 def update
   @group = Group.find(params[:id])
-  @group.update(group_params)
+   if @group.update(group_params)
 redirect_to group_path, notice: "更新成功"
+  else
+    render :edit
+  end
 end
 def destroy
   @group = Group.find(params[:id])
